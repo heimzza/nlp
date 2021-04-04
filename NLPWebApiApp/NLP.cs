@@ -46,6 +46,10 @@ namespace NLPWebApiApp
                                     i = i + 3;
                                     break;
                                 }
+                                else
+                                {
+                                    currentNumber = digitsMethod(int.Parse(newWord), currentNumber);
+                                }
 
                             }
                             // sayiyla 100 durumu
@@ -56,6 +60,10 @@ namespace NLPWebApiApp
                                     newWord = "yüz";
                                     i = i + 2;
                                     break;
+                                }
+                                else
+                                {
+                                    currentNumber = digitsMethod(int.Parse(newWord), currentNumber);
                                 }
                             }
                             else
@@ -278,7 +286,7 @@ namespace NLPWebApiApp
                 if (newWord == word && totalNumber + currentNumber == 0)
                 {
                     // ilk kelimeyse bosluksuz basla
-                    if (words[0] == word)
+                    if (String.IsNullOrEmpty(this.Output))
                     {
                         this.Output += word;
                     }
@@ -307,7 +315,7 @@ namespace NLPWebApiApp
                 else if (words.Last() == word)
                 {
                     totalNumber += currentNumber;
-                    if (words[0] == word)
+                    if (String.IsNullOrEmpty(this.Output))
                     {
                         this.Output += totalNumber.ToString();
                     }
@@ -318,6 +326,19 @@ namespace NLPWebApiApp
                     currentNumber = 0;
 
 
+                }
+                else if (newWord != "" && totalNumber + currentNumber != 0)
+                {
+                    totalNumber += currentNumber;
+                    if (String.IsNullOrEmpty(this.Output))
+                    {
+                        this.Output += totalNumber.ToString() + newWord;
+                    }
+                    else
+                    {
+                        this.Output += " " + totalNumber.ToString() + newWord;
+                    }
+                    currentNumber = totalNumber = 0;
                 }
 
             }

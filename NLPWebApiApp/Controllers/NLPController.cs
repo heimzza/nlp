@@ -12,20 +12,6 @@ namespace NLPWebApiApp.Controllers
     [ApiController]
     public class NLPController : ControllerBase
     {
-        // GET: api/<NLPController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<NLPController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         // POST api/<NLPController>
         [HttpPost]
         public IActionResult Post([FromBody] NLP nlp)
@@ -35,16 +21,5 @@ namespace NLPWebApiApp.Controllers
             return Ok(output);
         }
 
-        // PUT api/<NLPController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<NLPController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
